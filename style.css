@@ -1,0 +1,28 @@
+input{
+    text-align:center;
+    width:95%;
+    height: 3em;
+    font-size:2em;
+    border-radius:0.2em;
+    text-align: center;  
+}
+caption input{
+    text-align: right;
+}
+table{
+    border: 0.1em solid gray;
+    border-collapse: collapse;
+    width: 50%;
+    margin-left:2.5%;
+    background-color: gray;
+}
+caption{
+    border:0.1em solid gray;
+    font-size:1.5em;
+    background-color:gray;
+}
+th, td{
+    border:0.1em solid gray;
+    padding:0.5em;
+    text-align:center;
+}
