@@ -3,7 +3,8 @@ input{
     width:95%;
     height: 3em;
     font-size:2em;
-    border-radius:0.2em;
+   /*  border-radius: 0.2em; */   
+    
     text-align: center;  
 }
 caption input{
@@ -26,3 +27,4 @@ th, td{
     padding:0.5em;
     text-align:center;
 }
+
