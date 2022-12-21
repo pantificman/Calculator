@@ -1,14 +1,40 @@
 
+function equivalentCkeck(){
+    if (parseInt(document.getElementById("equivalent").value)) {
+        document.getElementById("equivalent").value = 0;
+        document.getElementById("result").value = 0;
+    }
+}
+
 function input(x){
-    if(document.getElementById("result").value == 0){
-        document.getElementById("result").value = x;
-    } else {
-    document.getElementById("result").value += x;
-  }
+
+    equivalentCkeck();
+
+    let y = parseFloat(document.getElementById("result").value);
+
+    if(document.getElementById("decimalVar").value == 0){
+        x +=y * 10; // multiply the text input by 10 and add the value of x
+        document.getElementById("result").value = x; //return x to the text output
+    } else { //if decimal is true
+        let decimalCount = parseInt(document.getElementById("decimalVar").value);
+        if(decimalCount == 1) {
+            x *= 1/10; // we are using math to place the decimal point.
+            y += x;
+            document.getElementById("result").value = y;
+        } else {
+            document.getElementById("result").value += x;
+        }
+        decimalCount++;
+        document.getElementById("decimalVar").value = decimalCount;
+    }
+  
 }
 
 function allclear(){
     document.getElementById("result").value = 0;
+    document.getElementById("operand").value = "";
+    document.getElementById("operation").value = 0;
+    document.getElementById("equivalent").value = 0;
 }
 function plusminus(){
     let x = parseFloat(document.getElementById("result").value);
@@ -46,12 +72,23 @@ let b = parseFloat(document.getElementById("result").value);
     }
     document.getElementById("operand").value = a;
     document.getElementById("result").value = a;
+    document.getElementById("equivalent").value = 1;
+}
+
+function decimalPoint(){
+    if(document.getElementById("decimalVar").value == 0){ // This prevents multiple decimal points
+       document.getElementById("decimalVar").value = 1;
+    }
+    if(parseInt(document.getElementById("operation").value)){//if this is an empty string, it will return false
+        document.getElementById("result").value = 0;
+    }
 }
 
 function operandCheck(){
     if(document.getElementById("operand").value == ""){
        document.getElementById("operand").value = document.getElementById("result").value;
        document.getElementById("result").value = 0; // This is temporary.
+       document.getElementById("equivalent").value = 1;
      } else {
         operatorChek();
      }
@@ -76,3 +113,8 @@ function operators(x){
   operandCheck();
 }
 
+function equals(){
+    operators(parseInt(document.getElementById("operation").value));
+    document.getElementById("result").value = document.getElementById("operand").value;
+    document.getElementById("operand").value = "";
+}
